@@ -22,6 +22,7 @@ Get your API credentials as describe in the [Kaggle API docs](https://github.com
 Upload the `kaggle.json` file you get to Colab. The following lines will move the file to the location that the Kaggle API expects it to be in:
 
 ```
+!mkdir -p /root/.kaggle
 !mv kaggle.json /root/.kaggle/
 !chmod 600 /root/.kaggle/kaggle.json
 ```
@@ -46,6 +47,7 @@ The downloaded zip file is then deleted to save space.
 !pip install kaggle
 
 # Move credentials file
+!mkdir -p /root/.kaggle
 !mv kaggle.json /root/.kaggle/
 !chmod 600 /root/.kaggle/kaggle.json
 
