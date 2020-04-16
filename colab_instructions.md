@@ -8,7 +8,7 @@ At the time of writing this, the Kaggle API version on Colab is `1.5.4`, but the
 We need to uninstall the current version, and re-install the latest version using `pip`:
 
 ```
-!pip uninstall kaggle
+!pip uninstall -y kaggle
 !pip install kaggle
 !kaggle --version
 ```
