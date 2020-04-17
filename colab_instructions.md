@@ -35,7 +35,7 @@ The downloaded zip file is then deleted to save space.
 ```
 !kaggle competitions download airbus-ship-detection
 !mkdir -p airbus-data
-!unzip airbus-ship-detection.zip -d airbus-data -q
+!unzip -q airbus-ship-detection.zip -d airbus-data
 !rm airbus-ship-detection.zip
 ```
 
@@ -54,6 +54,6 @@ The downloaded zip file is then deleted to save space.
 # Download and extract data
 !kaggle competitions download airbus-ship-detection
 !mkdir -p airbus-data
-!unzip airbus-ship-detection.zip -d airbus-data -q
+!unzip -q airbus-ship-detection.zip -d airbus-data
 !rm airbus-ship-detection.zip
 ```
