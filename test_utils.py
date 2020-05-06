@@ -41,3 +41,56 @@ class TestRLEMethods(unittest.TestCase):
         expected_mask,
         f'Expected: {expected_mask}, Received: {result}'
     )
+
+  def test_decoder_1(self):
+
+    expected_img = np.array([ [1, 0, 0, 0],
+                              [0, 1, 1, 0],
+                              [0, 1, 1, 0],
+                              [0, 0, 0, 0]])
+    mask = '1 1 6 2 10 2'
+
+    result = rle_decode(mask, (4, 4))
+    self.assertEqual(
+        np.array_equal(result, expected_img),
+        True,
+        f'Expected:\n{expected_img}\n\nReceived:\n{result}'
+    )
+
+  def test_decoder_2(self):
+
+    expected_img = np.array([ [0, 1, 0, 0, 0, 0, 0],
+                              [0, 1, 1, 0, 0, 0, 0],
+                              [0, 1, 1, 1, 0, 0, 0],
+                              [0, 1, 1, 1, 1, 0, 0],
+                              [0, 1, 1, 1, 1, 1, 0],
+                              [0, 0, 0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0]])
+    mask = '9 5 18 4 27 3 36 2 45 1'
+
+    result = rle_decode(mask, (8, 7))
+    self.assertEqual(
+        np.array_equal(result, expected_img),
+        True,
+        f'Expected:\n{expected_img}\n\nReceived:\n{result}'
+    )
+
+  def test_decoder_3(self):
+
+    expected_img = np.array([ [0, 1, 0, 0, 0, 0, 0, 0],
+                              [0, 1, 1, 0, 0, 0, 0, 0],
+                              [0, 1, 1, 1, 0, 0, 0, 0],
+                              [0, 1, 1, 1, 1, 0, 0, 0],
+                              [0, 1, 1, 1, 1, 1, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0, 0]])
+    mask = '9 5 18 4 27 3 36 2 45 1'
+
+    result = rle_decode(mask, (8, 8))
+    self.assertEqual(
+        np.array_equal(result, expected_img),
+        True,
+        f'Expected:\n{expected_img}\n\nReceived:\n{result}'
+    )
