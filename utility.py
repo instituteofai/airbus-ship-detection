@@ -37,3 +37,4 @@ def rle_decode(mask_rle, shape):
   for lo, hi in zip(starts, ends):
       img[lo:hi] = 1
   return img.reshape(shape[1], shape[0]).T
+  
