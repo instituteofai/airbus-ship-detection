@@ -36,13 +36,19 @@ class ShipDataset(Dataset):
     mask = masks_as_img(self.image_masks[idx])
     return img, mask
 
-def get_datasets():
+def get_datasets(top=None):
   """
   Get an instance of training and test dataset
   """
   df = pd.read_csv('../input/train_ship_segmentations_v2.csv')
   unique_image_ids = df.groupby('ImageId').size().reset_index(name='counts')
-  train_ids, valid_ids = train_test_split(unique_image_ids, test_size=0.2, stratify=unique_image_ids['counts'])
+    stratification = unique_image_ids['counts']
+
+    if top is not None:
+        unique_image_ids = unique_image_ids.head(top)
+        stratification = None
+
+    train_ids, valid_ids = train_test_split(unique_image_ids, test_size=0.2, stratify=stratification)
   train_df = pd.merge(df, train_ids)
   valid_df = pd.merge(df, valid_ids)
 
