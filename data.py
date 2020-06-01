@@ -38,7 +38,7 @@ class ShipDataset(Dataset):
     def __getitem__(self, idx):
         img_file_name = self.image_ids[idx]
         img = imread(f'../input/airbus-ship-detection/{self.image_path}/{img_file_name}')
-        img = img.transpose([2, 0, 1]).astype(float)
+        img = img.astype(float)
         mask = masks_as_img(self.image_masks[idx])
         return self.img_transform(img), torch.from_numpy(np.moveaxis(mask, -1, 0)).float()
 
