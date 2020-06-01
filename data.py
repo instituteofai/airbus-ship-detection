@@ -37,7 +37,7 @@ class ShipDataset(Dataset):
 
     def __getitem__(self, idx):
         img_file_name = self.image_ids[idx]
-        img = imread(f'../input/{self.image_path}/{img_file_name}')
+        img = imread(f'../input/airbus-ship-detection/{self.image_path}/{img_file_name}')
         img = img.transpose([2, 0, 1]).astype(float)
         mask = masks_as_img(self.image_masks[idx])
         return self.img_transform(img), torch.from_numpy(np.moveaxis(mask, -1, 0)).float()
@@ -47,7 +47,7 @@ def get_datasets(top=None):
     """
     Get an instance of training and test dataset
     """
-    df = pd.read_csv('../input/train_ship_segmentations_v2.csv')
+    df = pd.read_csv('../input/airbus-ship-detection/train_ship_segmentations_v2.csv')
     unique_image_ids = df.groupby('ImageId').size().reset_index(name='counts')
     stratification = unique_image_ids['counts']
 
